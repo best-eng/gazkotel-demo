@@ -26,7 +26,7 @@
       var open = body.classList.toggle("menu-open");
       toggle.setAttribute("aria-expanded", open ? "true" : "false");
     });
-    document.querySelectorAll(".nav a").forEach(function (a) { a.addEventListener("click", closeMenu); });
+    document.querySelectorAll(".menu a").forEach(function (a) { a.addEventListener("click", closeMenu); });
     document.addEventListener("keydown", function (e) { if (e.key === "Escape") closeMenu(); });
   }
 
