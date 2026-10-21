@@ -191,10 +191,12 @@ button, input, select, textarea { font: inherit; color: inherit; }
   text-transform: uppercase; color: var(--muted); }
 .lcd { position: absolute; left: 50%; top: 96px; width: 150px; height: 80px; margin-left: -75px; display: grid; place-items: center; border-radius: 10px;
   background: #1c2733; box-shadow: inset 0 0 0 4px #c9d3df, inset 0 4px 14px rgba(0, 0, 0, .6); }
-.lcd span { font: 700 42px/1 "Courier New", Consolas, monospace; letter-spacing: 3px; color: #ffbf47; text-shadow: 0 0 10px rgba(255, 191, 71, .7);
-  animation: blink 1.2s steps(2, start) infinite; }
+.lcd span { display: block; font: 700 42px/1 "Courier New", Consolas, monospace; letter-spacing: 3px; color: #ffbf47;
+  text-shadow: 0 0 8px rgba(255, 191, 71, .5); animation: glow 2.8s ease-in-out infinite;
+  transition: opacity .45s ease, transform .45s ease, filter .45s ease; }
+.lcd span.out { opacity: 0; transform: translateY(5px) scale(.96); filter: blur(2px); }
 .lcd i { position: absolute; right: 12px; bottom: 7px; font: 700 11px/1 Consolas, monospace; font-style: normal; color: rgba(255, 191, 71, .7); }
-@keyframes blink { 50% { opacity: .25; } }
+@keyframes glow { 50% { text-shadow: 0 0 16px rgba(255, 191, 71, .95), 0 0 2px rgba(255, 220, 150, .8); } }
 .knobs { position: absolute; left: 0; right: 0; bottom: 70px; display: flex; justify-content: center; gap: 20px; }
 .knobs i { width: 34px; height: 34px; border-radius: 50%; background: radial-gradient(circle at 40% 35%, #fff, #c6d0dc);
   box-shadow: inset 0 -3px 0 rgba(0, 0, 0, .1), 0 3px 5px rgba(0, 0, 0, .18); }
@@ -292,8 +294,6 @@ button, input, select, textarea { font: inherit; color: inherit; }
 .map figcaption a { color: inherit; }
 .map-radius, .map-dot, .map-pin { position: absolute; }
 .map-radius { border-radius: 50%; background: rgba(var(--primary-rgb), .08); border: 2px dashed rgba(var(--primary-rgb), .55); }
-.map-radius::after { content: ""; position: absolute; left: 50%; top: 50%; width: 14px; height: 14px; margin: -7px 0 0 -7px; border-radius: 50%;
-  background: var(--primary); border: 3px solid #fff; box-shadow: 0 0 0 1px rgba(var(--primary-dark-rgb), .3); }
 .map-dot { width: 11px; height: 11px; margin: -5.5px 0 0 -5.5px; border-radius: 50%; background: var(--accent-dark); border: 2px solid #fff;
   box-shadow: 0 0 0 1px rgba(0, 0, 0, .12); }
 .map-pin { transform: translate(-50%, calc(-100% - 14px)); pointer-events: none; }

@@ -137,7 +137,15 @@
   if (lcd && !window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     var codes = (lcd.getAttribute("data-codes") || "").split(",").filter(Boolean);
     var n = 0;
-    if (codes.length > 1) setInterval(function () { n = (n + 1) % codes.length; lcd.textContent = codes[n]; }, 2400);
+    // плавная смена кода: старый гаснет, новый проявляется
+    if (codes.length > 1) setInterval(function () {
+      lcd.classList.add("out");
+      setTimeout(function () {
+        n = (n + 1) % codes.length;
+        lcd.textContent = codes[n];
+        lcd.classList.remove("out");
+      }, 450);
+    }, 3000);
   }
 
   /* ---------- поиск по зоне выезда ---------- */
